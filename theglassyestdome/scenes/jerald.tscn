@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://gnv1dw4wjocb"]
+
+[ext_resource type="Texture2D" uid="uid://chubs3l0thr1w" path="res://resources/characters/jimbo_grasshopper.png" id="1_2mtxk"]
+
+[node name="jimbo" type="Sprite2D"]
+position = Vector2(528, 292)
+texture = ExtResource("1_2mtxk")
