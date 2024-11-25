@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://b2rvph4d7cjs7"]
+[gd_scene load_steps=4 format=3 uid="uid://b2rvph4d7cjs7"]
+
+[ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_nb06r"]
+[ext_resource type="Texture2D" uid="uid://db0tcw21fco5c" path="res://resources/items/dome.png" id="2_njici"]
+[ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="3_767yi"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3
@@ -7,3 +11,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MainContent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="MainContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 1334.0
+offset_bottom = 776.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("1_nb06r")
+
+[node name="Dome" type="TextureRect" parent="MainContent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 221.0
+offset_top = 271.0
+offset_right = 721.0
+offset_bottom = 483.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_njici")
+
+[node name="jimbo" parent="MainContent" instance=ExtResource("3_767yi")]
+position = Vector2(584, 528)

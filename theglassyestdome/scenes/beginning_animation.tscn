@@ -1,4 +1,235 @@
-[gd_scene format=3 uid="uid://bq6iotr7ks608"]
+[gd_scene load_steps=10 format=3 uid="uid://bq6iotr7ks608"]
+
+[ext_resource type="Theme" uid="uid://uvnl8t78hotp" path="res://resources/themes/Subtitles.tres" id="1_2jemv"]
+[ext_resource type="Script" path="res://scripts/beginning_animation.gd" id="1_uy2b6"]
+[ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="2_lukmo"]
+[ext_resource type="Texture2D" uid="uid://db0tcw21fco5c" path="res://resources/items/dome.png" id="3_d32y4"]
+[ext_resource type="AudioStream" uid="uid://beenjq2pc1bye" path="res://resources/audio/introSccene/introVoice.mp3" id="3_nts1r"]
+[ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="4_r0ksp"]
+
+[sub_resource type="Animation" id="Animation_m450v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroSounds:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Captions:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainContent/Background:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainContent/jimbo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1205, 461)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainContent/jimbo:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainContent/Dome:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(241, -305)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainContent/jimbo:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.486947]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_865ll"]
+resource_name = "intro"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroSounds:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Captions")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Captions:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.633333, 2.23333, 2.26667, 3, 4.36667, 5.03333, 5.93333, 5.96667, 6.5, 6.53333, 9.2, 9.23333, 10.0333, 10.6667, 10.7333, 11.8, 11.9333, 12.5333, 12.5667, 13.0667, 13.1667, 13.8333, 13.8667, 14.4, 14.7, 14.7333, 15.8, 16.7333, 16.7667, 17.1333, 17.1667, 18.8667, 18.9, 19.5333, 22.1333, 22.3, 23.2, 25.5, 25.5667, 26.0667, 27.1, 27.2667, 28.5, 32.7, 32.7333, 33.6, 33.7, 35.4667, 35.5333, 36.8333, 36.8667, 41.9333, 41.9667, 42.0333, 44.8667, 44.9, 45.9333, 46.6, 46.6333, 47.3333, 50.7667, 50.8, 51.8, 53.5667, 53.6, 54.3333, 54.8, 54.8333, 55.4667, 56.4, 57.2333, 57.9667, 58.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Well, hello there.", "Well, hello there.", "", "You might be wondering how you got here.", "You might be wondering how you got here.", "Well, I don’t know either. ", "Well, I don’t know either. ", "", "", "But hey, you’re here to play a game, 
+not listen to me ramble.", "But hey, you’re here to play a game, 
+not listen to me ramble.", "", "So, let’s get started.", "So, let’s get started.", "", "", "You’re in a kitchen.", "You’re in a kitchen.", "", "", "And your name? ", "And your name? ", "", "Jimbo.", "Jimbo.", "", "You’re a small grasshopper", "You’re a small grasshopper", "", "", "hopping about, fending off parasites", "hopping about, fending off parasites", "", "and scraping off crumbs and dust 
+from last night’s feast.", "and scraping off crumbs and dust 
+from last night’s feast.", "", "But today… today wasn’t easy, was it?", "But today… today wasn’t easy, was it?", "", "A bowl slams down.", "A bowl slams down.", "", "A glass dome
+trapping you beneath its unyielding weight.", "A glass dome
+trapping you beneath its unyielding weight.", "", "", "You feel it now, don’t you?", "You feel it now, don’t you?", "", "", "Trapped. Encased. Helpless beneath 
+something so colossal and so unbreakable", "Trapped. Encased. Helpless beneath 
+something so colossal and so unbreakable", "", "it makes your struggles feel... insignificant.", "it makes your struggles feel... insignificant.", "", "Shouting doesn’t help.", "Shouting doesn’t help.", "", "Punching? Pointless. Waiting? Utterly futile.", "Punching? Pointless. Waiting? Utterly futile.", "", "Now there’s only one thing left to do.", "Now there’s only one thing left to do.", "", "Escape.", "Escape.", "", "Escape this—", "Escape this—", "Glassy Dome.", "Glassy Dome.", ""]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainContent/Background:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10.6333, 11.7667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainContent/jimbo:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(14.1667, 14.3333, 16.0333, 16.1333, 16.3333, 17.6236, 17.8333, 18, 19.6, 19.8, 19.9333, 22.4667, 23.1333, 23.5, 23.9333, 24.7, 25.1667, 25.6333, 37.5, 37.5667, 40.8958, 40.9667, 41.0333, 41.0667, 55.5258, 55.7, 55.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1218, 137), Vector2(1077, 523), Vector2(1077, 523), Vector2(892, 94.9999), Vector2(761, 473), Vector2(761, 473), Vector2(613, 112), Vector2(354, 396), Vector2(354, 396), Vector2(101, 141), Vector2(-148, 505), Vector2(-87, 348), Vector2(-87, 348), Vector2(52, 157), Vector2(214, 490), Vector2(214, 490), Vector2(417, 129), Vector2(583, 437), Vector2(583, 437), Vector2(859, 423), Vector2(859, 423), Vector2(419, 276), Vector2(419, 276), Vector2(419, 441), Vector2(419, 441), Vector2(522, 373), Vector2(590, 445)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainContent/jimbo:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(13.9333, 22.6667, 23.0667, 29.2667, 29.6, 30.4, 30.4667, 30.7667, 30.8333, 30.9667, 31.0333, 31.0667, 31.1333, 31.1667, 31.2333, 33.9667, 34.0667, 36.9333, 37, 37.6667, 38.5667, 47.1356, 47.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false, false, true, false, true, false, true, false, true, false, true, true, false, false, true, true, false, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainContent/Dome:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(26.7667, 26.9333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(241, -335), Vector2(241, 190)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MainContent/jimbo:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(37.4667, 37.5667, 37.6333, 40.9667, 41.0333, 41.0667, 45.3667, 45.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.486947, 0.0, -0.654498, -0.654498, 3.14159, 3.14159, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 58.6, 60),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4k56"]
+_data = {
+"RESET": SubResource("Animation_m450v"),
+"intro": SubResource("Animation_865ll")
+}
 
 [node name="BeginningAnimation" type="Control"]
 layout_mode = 3
@@ -7,12 +238,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uy2b6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MainContent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="MainContent"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 1334.0
+offset_bottom = 776.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("2_lukmo")
+
+[node name="Dome" type="TextureRect" parent="MainContent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 221.0
+offset_top = -325.0
+offset_right = 721.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("3_d32y4")
+
+[node name="jimbo" parent="MainContent" instance=ExtResource("4_r0ksp")]
+position = Vector2(1205, 461)
+rotation = 0.486947
+flip_h = true
+script = null
+
+[node name="Captions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -252.0
+offset_right = 575.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_2jemv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="IntroSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nts1r")
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q4k56")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

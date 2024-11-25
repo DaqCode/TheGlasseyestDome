@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://gnv1dw4wjocb"]
+
+[ext_resource type="Texture2D" uid="uid://chubs3l0thr1w" path="res://resources/characters/jimbo_grasshopper.png" id="1_2mtxk"]
+[ext_resource type="Script" path="res://scripts/jimbo.gd" id="2_22j5t"]
+
+[node name="jimbo" type="Sprite2D"]
+position = Vector2(391, -44)
+scale = Vector2(0.415254, 0.422481)
+texture = ExtResource("1_2mtxk")
+script = ExtResource("2_22j5t")
