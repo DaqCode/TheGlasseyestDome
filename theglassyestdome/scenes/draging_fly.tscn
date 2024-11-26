@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq06iprx87piv"]
+
+[ext_resource type="Texture2D" uid="uid://cf2nncoqjuc3k" path="res://resources/characters/slypth_dragingfly.png" id="1_edpjn"]
+
+[node name="DragingFly" type="Sprite2D"]
+position = Vector2(565, 302)
+texture = ExtResource("1_edpjn")

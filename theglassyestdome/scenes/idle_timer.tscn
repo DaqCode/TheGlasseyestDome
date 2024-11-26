@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ovx0thtudnq"]
+
+[ext_resource type="Script" path="res://scripts/idle_timer.gd" id="1_roh88"]
+[ext_resource type="FontFile" uid="uid://dlableyd2dti2" path="res://resources/fonts/menu/Radlush-Bold.otf" id="2_xw27n"]
+
+[node name="IdleTimer" type="Node"]
+script = ExtResource("1_roh88")
+
+[node name="Idle" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="Countdown" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_xw27n")
+theme_override_font_sizes/font_size = 45
+text = "1:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Idle" to="." method="_on_idle_timeout"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2rvph4d7cjs7"]
+[gd_scene load_steps=7 format=3 uid="uid://b2rvph4d7cjs7"]
 
+[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_3cssu"]
 [ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_nb06r"]
 [ext_resource type="Texture2D" uid="uid://db0tcw21fco5c" path="res://resources/items/dome.png" id="2_njici"]
 [ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="3_767yi"]
+[ext_resource type="PackedScene" uid="uid://c8ovx0thtudnq" path="res://scenes/idle_timer.tscn" id="4_86uk0"]
+[ext_resource type="AudioStream" uid="uid://cy7fm038st8qw" path="res://resources/music/roamFree.mp3" id="6_35gbh"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3
@@ -11,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3cssu")
 
 [node name="MainContent" type="Control" parent="."]
 layout_mode = 3
@@ -50,3 +54,10 @@ texture = ExtResource("2_njici")
 
 [node name="jimbo" parent="MainContent" instance=ExtResource("3_767yi")]
 position = Vector2(584, 528)
+flip_h = true
+
+[node name="IdleTimer" parent="." instance=ExtResource("4_86uk0")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_35gbh")
+autoplay = true
