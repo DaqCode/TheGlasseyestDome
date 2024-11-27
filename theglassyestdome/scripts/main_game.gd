@@ -1,7 +1,14 @@
 extends Control
 
+#OnReady var
 
-# Called when the node enters the scene tree for the first time.
+#Random event creater.
+#Should make references to the 7 events that could happen?
+
+
+#Chance variables
+var chance := 1.0 / 10000.0
+
 func _ready() -> void:
 	pass # Replace with function body.
 

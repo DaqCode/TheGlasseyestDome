@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2rvph4d7cjs7"]
+[gd_scene load_steps=8 format=3 uid="uid://b2rvph4d7cjs7"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_3cssu"]
 [ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_nb06r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="3_767yi"]
 [ext_resource type="PackedScene" uid="uid://c8ovx0thtudnq" path="res://scenes/idle_timer.tscn" id="4_86uk0"]
 [ext_resource type="AudioStream" uid="uid://cy7fm038st8qw" path="res://resources/music/roamFree.mp3" id="6_35gbh"]
+[ext_resource type="PackedScene" uid="uid://cq06iprx87piv" path="res://scenes/draging_fly.tscn" id="7_6nlua"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3
@@ -17,20 +18,24 @@ grow_vertical = 2
 script = ExtResource("1_3cssu")
 
 [node name="MainContent" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="MainContent"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -21.0
-offset_right = 1334.0
-offset_bottom = 776.0
+offset_left = -14.0
+offset_top = -33.0
+offset_right = 228.0
+offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
@@ -43,21 +48,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 221.0
-offset_top = 271.0
-offset_right = 721.0
-offset_bottom = 483.0
+offset_left = -331.0
+offset_top = -167.0
+offset_right = 169.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_njici")
 
 [node name="jimbo" parent="MainContent" instance=ExtResource("3_767yi")]
-position = Vector2(584, 528)
+position = Vector2(38.0001, 81)
 flip_h = true
-
-[node name="IdleTimer" parent="." instance=ExtResource("4_86uk0")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_35gbh")
 autoplay = true
+
+[node name="DebugCheck" type="Node" parent="."]
+
+[node name="IdleTimer" parent="DebugCheck" instance=ExtResource("4_86uk0")]
+
+[node name="RandomEvent" type="Node" parent="."]
+
+[node name="DragingFlyEvent" parent="RandomEvent" instance=ExtResource("7_6nlua")]

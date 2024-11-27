@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://du8l63a56uknv"]
+
+[ext_resource type="FontFile" uid="uid://cx6kofxbvowck" path="res://resources/fonts/eventPanel/VanillaExtractRegular.ttf" id="1_4d6sc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1v7o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh323"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.621222, 0.88528, 0.86565, 0.992157)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.818791, 0.767095, 0.951718, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[resource]
+Label/colors/font_color = Color(0, 0.352443, 0.836812, 1)
+Label/colors/font_outline_color = Color(0.689788, 0.750061, 0.988303, 1)
+Label/colors/font_shadow_color = Color(1, 1, 1, 1)
+Label/constants/line_spacing = 9
+Label/constants/outline_size = 1
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 15
+Label/fonts/font = ExtResource("1_4d6sc")
+Label/styles/normal = SubResource("StyleBoxEmpty_m1v7o")
+Panel/styles/panel = SubResource("StyleBoxFlat_hh323")
