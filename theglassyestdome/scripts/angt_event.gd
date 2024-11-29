@@ -1,26 +1,35 @@
-class_name DraggingFlyEvent
+class_name TheWatcherAnt
 extends Control
 
 @onready var eventPanel := $EventPanel
 @onready var eventTimer := $EventTimer
-@onready var slypth := $SlypthDragingFly
-@onready var choiceTimer := $SelectionChoice
-@onready var eventChoice := $EventPanel/PointerDragingFly  # This is the arrow/picker
+@onready var angt := $WandererAngt
+@onready var choiceTimer := $ChoiceTimer
+@onready var eventChoice := $EventPanel/PointerAngt  # This is the arrow/picker
 @onready var eventText := $EventPanel/MainEvent
 @onready var textTimer := $TextTimer
-@onready var bede := $bede
+@onready var bede := $EffectTImer
 
-var can_fly := false  # Flag to indicate if flying is allowed
+var can_walk := false  # Flag to indicate if flying is allowed
+var can_walk_away := false
 var event_show := false  # Flag to indicate if the event can be shown
 var choice_lock := false
 
+# New flag variables to ensure one-time execution
+var event_in_progress := false
+var choice_timer_active := false
 
 # Choice variables
 var current_choice := 0
 	
 func start_event() -> void:
-	print("Starting draging_fly event")
-	can_fly = false
+	if event_in_progress:  # Ensure the event does not start if already in progress
+		print("Event is already in progress. Cannot start a new one.")
+		return
+	
+	print("Starting ang_walking event")
+	event_in_progress = true
+	can_walk = false
 	eventPanel.visible = false
 	reset_event_timer()
 
@@ -31,21 +40,29 @@ func start_event() -> void:
 	print("Event timer wait time: ", eventTimer.wait_time)
 
 func _on_event_timer_timeout() -> void:
-	can_fly = true  # Allow dragging when the timer expires
-	print("Dragonfly can now start moving")
+	can_walk = true  
+	print("Abgt can now start crawling")
 
 func _process(delta: float) -> void:
-	if can_fly:
-		slypth.position.x += 250 * delta
-		if slypth.position.x > 1400:
-			can_fly = false
-			slypth.position.x = -100
-			show_event_panel()  # Show the event panel when the dragonfly completes its travel
+	if can_walk:
+		angt.position.x += 25 * delta
+		angt.flip_h = true
+		if angt.position.x > 140:
+			can_walk = false
+			show_event_panel() 
+	
+	if can_walk_away:
+		angt.position.x -= 45 * delta
+		angt.flip_h = false
+		if angt.position.x < -50:
+			can_walk_away = false
+			angt.flip_h = false
 	
 	if choice_lock:
 		if Input.is_action_just_pressed("press"):
 			print("NOPE YOU CANT PRESS CUZ YOU CONFIORMED YOUR CHOICE YOU DINGUS")
 			pass
+
 
 func show_event_panel() -> void:
 	eventPanel.visible = true
@@ -54,9 +71,15 @@ func show_event_panel() -> void:
 	print("Event panel is now visible, starting choice timer")
 
 func reset_event_timer() -> void:
-	print("Event timer reset")
+	can_walk_away = false
+	print("Event timer reset for AGBT")
 
 func start_choice_timer() -> void:
+	if choice_timer_active:  # Ensure the choice timer only starts once
+		print("Choice timer is already active.")
+		return
+
+	choice_timer_active = true
 	choiceTimer.wait_time = 1.0  # Switch choices every second
 	choiceTimer.start()
 	print("Choice timer started")
@@ -77,11 +100,15 @@ func update_choice_position() -> void:
 		eventChoice.position = Vector2(417, 137)
 		print("Current choice: NO")
 
-	print (current_choice)
+	if current_choice >= 15:
+		confirm_choice()
+
+	print(current_choice)
 
 func confirm_choice() -> void:
 	print("CHOICE CONFIRMED")
 	choice_lock = true
+	choice_timer_active = false  # Reset the choice timer flag
 	choiceTimer.stop()  # Stop the choice timer when confirmed
 	eventChoice.visible = false
 	$EventPanel/Yes.visible = false
@@ -91,59 +118,55 @@ func confirm_choice() -> void:
 		var rand = randi_range(1, 2)
 		if rand == 1:
 			print("text shows yes and good effect")
-			eventText.text = """Slyph grants you assistance. He blesses you with his own abilities.
-	You feel ever so light. You can now punch even more."""
+			eventText.text = """The Wanderer stares towards you. 
+			You sense comfort, luck, and wisdom. The Wanderer tells you 
+			that you'll pass. You feel much stronger."""
 
-			Global.breaking_rate = 5000
-			bede.connect("timeout", Callable(self, "_on_bedu_timer_timeout"))  # Example connection for idle events
+			Global.breaking_rate = 2500
 			bede.wait_time = 30
 			bede.start()
+
 		else:
-
 			print("text shows yes, but bad effect")
-			eventText.text = """Slyph grants you assistance. However, it didn't work as intended.
-	You feel much weaker. You weren't ready yet."""
+			eventText.text = """The Wanderer stares towards you. 
+			You sense, dread, despair, and unfortune. The Wanderer senses 
+			you might fail, but you shouldn't give in. You feel slightly weaker."""
 
-			
 			if Global.breaking_rate == 7500:
 				Global.breaking_rate = 10500
 			else: 
 				Global.breaking_rate = 12750
-
-			bede.connect("timeout", Callable(self, "_on_bedu_timer_timeout"))  # Example connection for idle events
 			bede.wait_time = 20
 			bede.start()
-
 	else:
 		print("text shows no")
-		eventText.text = """You thank Slyph for his help, but decide it's not your chance.
-	Slyph then flies off, and you await his return again."""
+		eventText.text = """The eyes of the Wanderer decieve you. You sense 
+		that it might not be worth the risk, and you decide to turn away. 
+		The Wanderer then dissapears."""
 
 	textTimer.one_shot = true
 	textTimer.wait_time = 7.5  # Wait for 7 seconds
 	textTimer.start()
 	
-	
 func _on_text_timer_timeout() -> void:
-	# Print the reset time before resetting the event
-	var reset_time = randi_range(30, 75)
-	print("Resetting event panel in: ", reset_time, " seconds.")
+	can_walk_away = true
+	current_choice = 0
 
 	# Reset the panel and start the timer for the next event
 	reset_event_panel()
-	eventTimer.wait_time = reset_time
-	eventTimer.start()
 
 func reset_event_panel() -> void:
 	choice_lock = false
+	event_in_progress = false  # Reset event in progress flag
 	eventPanel.visible = false
 	event_show = false
-	eventText.text = """Slyph the Draging-fly
-	"You don't know where he came from, but you sense good and bad.
-	He promises luck to you, or misfortune. You feel a sense of uncertainty."
-	Take the chances?"""
+	choice_timer_active = false  # Reset choice timer flag
+	eventText.text = """Wanderer The Ang-T
+	"He seems to have waddled his way towards where you are.
+	He says his vision will tell you the hopeful truth, or possible lie."
+	Take the chance?
+	"""
 
-	
 	eventChoice.visible = true
 	$EventPanel/Yes.visible = true
 	$EventPanel/No.visible = true
@@ -156,7 +179,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("press") and event_show:
 		confirm_choice()
 
+
 func _on_bedu_timer_timeout() -> void:
-	print("Bede timer timeout")
+	print("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 	Global.breaking_rate = 10000
 	get_parent().get_parent().start_random_event()

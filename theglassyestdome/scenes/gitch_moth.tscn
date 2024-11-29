@@ -1,19 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq06iprx87piv"]
+[gd_scene load_steps=5 format=3 uid="uid://barlkibl67nja"]
 
-[ext_resource type="Texture2D" uid="uid://cf2nncoqjuc3k" path="res://resources/characters/slypth_dragingfly.png" id="1_edpjn"]
-[ext_resource type="Theme" uid="uid://du8l63a56uknv" path="res://resources/themes/EventPanel.tres" id="2_dipdv"]
-[ext_resource type="Script" path="res://scripts/draging_fly.gd" id="2_rilpd"]
-[ext_resource type="Texture2D" uid="uid://yam1fjl0jbao" path="res://resources/items/pointerDragingFly.png" id="3_ylqtq"]
+[ext_resource type="Script" path="res://scripts/gitch_moth.gd" id="1_hms7d"]
+[ext_resource type="Theme" uid="uid://du8l63a56uknv" path="res://resources/themes/EventPanel.tres" id="1_jyktv"]
+[ext_resource type="Texture2D" uid="uid://yam1fjl0jbao" path="res://resources/items/pointerDragingFly.png" id="2_55hk6"]
+[ext_resource type="Texture2D" uid="uid://jfme78uqd1vx" path="res://resources/characters/glonchMoth.png" id="4_6wtju"]
 
-[node name="DragingFlyEvent" type="Control"]
+[node name="GitchMoth" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.987)
-script = ExtResource("2_rilpd")
+script = ExtResource("1_hms7d")
 
 [node name="EventPanel" type="Panel" parent="."]
 visible = false
@@ -28,7 +27,7 @@ offset_top = -160.0
 offset_right = 315.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("2_dipdv")
+theme = ExtResource("1_jyktv")
 
 [node name="MainEvent" type="Label" parent="EventPanel"]
 layout_mode = 1
@@ -43,11 +42,11 @@ offset_right = 293.5
 offset_bottom = 28.612
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_dipdv")
-text = "Slyph the Draging-fly
-\"You don't know where he came from, but you sense a good and bad.
-He promises luck to you, or misfortune. You feel a sense of disertanty.\"
-Take the chances?
+theme = ExtResource("1_jyktv")
+text = "Glotch The Glitch Moth
+\"The words coming out of the moth is incomprehensible.
+You can partially tell that he's asking you to take his offer.\"
+Take the offer?
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -62,7 +61,7 @@ offset_top = -27.9392
 offset_right = 247.0
 offset_bottom = 3.06079
 grow_vertical = 0
-theme = ExtResource("2_dipdv")
+theme = ExtResource("1_jyktv")
 text = "Yes"
 horizontal_alignment = 1
 
@@ -76,19 +75,18 @@ offset_top = -30.9787
 offset_right = 501.0
 offset_bottom = 0.0212708
 grow_vertical = 0
-theme = ExtResource("2_dipdv")
+theme = ExtResource("1_jyktv")
 text = "No"
 horizontal_alignment = 1
 
-[node name="PointerDragingFly" type="Sprite2D" parent="EventPanel"]
+[node name="PointerGlitchMoth" type="Sprite2D" parent="EventPanel"]
 position = Vector2(157, 137)
-texture = ExtResource("3_ylqtq")
+texture = ExtResource("2_55hk6")
 
-[node name="SlypthDragingFly" type="Sprite2D" parent="."]
-position = Vector2(-36, 52.6849)
-rotation = 0.698132
+[node name="GlotchGlitchMoth" type="Sprite2D" parent="."]
+position = Vector2(1273, 87)
 scale = Vector2(0.419866, 0.437041)
-texture = ExtResource("1_edpjn")
+texture = ExtResource("4_6wtju")
 
 [node name="EventTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -104,3 +102,4 @@ one_shot = true
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
 [connection signal="timeout" from="SelectionChoice" to="." method="_on_selection_choice_timeout"]
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
+[connection signal="timeout" from="bede" to="." method="_on_bedu_timer_timeout"]
