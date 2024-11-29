@@ -19,6 +19,7 @@ var crack_event_activated = false
 var glitch_event = false   
 var resonance_event_activated = false
 var resonance_shake = false
+var current_tween: Tween = null  # Store the active tween
 
 @onready var sfx_options = [
 	preload("res://resources/audio/sfx/breaking_out/break1.mp3"),
@@ -27,9 +28,13 @@ var resonance_shake = false
 ]
 
 func _ready() -> void:
-	idle_timer.connect("timeout", Callable(self, "_on_idle_timeout"))  # Example connection for idle events
-	randomize()  # Seed RNG
-	start_random_event()
+	$Animation.play("intro")
+
+func _on_animation_animation_finished(anim_name:StringName) -> void:
+	if anim_name == "intro":
+		idle_timer.connect("timeout", Callable(self, "_on_idle_timeout"))  # Example connection for idle events
+		randomize()  # Seed RNG
+		start_random_event()
 
 func start_random_event() -> void:
 	if active_event:
@@ -38,11 +43,11 @@ func start_random_event() -> void:
 
 	# Pick a random event
 	var events = [
-		#dragging_fly_event
+		# dragging_fly_event,
 		# watcher_ant_event, 
 		# fissure_frenzy_event,
-		# glitch_in_the_system,
-		resonance_ripple
+		glitch_in_the_system
+		# resonance_ripple
 		
 	]
 	randomize()
@@ -64,7 +69,9 @@ func _process(_delta: float) -> void:
 		var breaking = randi_range(1, Global.breaking_rate)
 
 		if breaking == 1:  # Adjusted for the variable rate
-			print("Breaking!")
+			_vibrate_dome()
+			get_tree().change_scene_to_file("res://scenes/ending_scene.tscn")
+			pass
 
 		else:
 			if glitch_event:
@@ -78,12 +85,7 @@ func _process(_delta: float) -> void:
 			if resonance_shake:
 				_vibrate_dome_but_more()
 			else:
-				pass
-			
-		_vibrate_dome()
-		print("Current breaking rate: 1 in ", Global.breaking_rate)
-		print("Selected number, ", breaking)
-
+				_vibrate_dome()
 
 
 func random_sfx() -> void:
@@ -113,22 +115,29 @@ func _vibrate_dome() -> void:
 	tween.tween_property(dome, "position", base_position, 0.05)
 
 func _vibrate_dome_but_more() -> void:
-	var tween = get_tree().create_tween()
-	
-	# Define the base position
-	var base_position = Vector2(-331, -167)
+	if dome:
+		# Stop and remove the existing tween if it exists
+		if current_tween:
+			current_tween.stop()
+			current_tween = null
 
-	# Create small random offsets for the vibration
-	for _i in range(randi_range(5,10)):  # Number of shakes
-		tween.tween_property(
-			dome, 
-			"position", 
-			base_position + Vector2(randf_range(-50, 50), randf_range(-50, 50)), 
-			0.01
-		)
+		# Create a new tween
+		current_tween = get_tree().create_tween()
+		var base_position = Vector2(-331, -167)
 
-	# Return to the original position
-	tween.tween_property(dome, "position", base_position, 0.05)
+		# Create small random offsets for the vibration
+		for _i in range(randi_range(5, 10)):  # Number of shakes
+			current_tween.tween_property(
+				dome, 
+				"position", 
+				base_position + Vector2(randf_range(-50, 50), randf_range(-50, 50)), 
+				0.01
+			)
+
+		# Return to the original position
+		current_tween.tween_property(dome, "position", base_position, 0.05)
+	else:
+		print("Error: Dome is null.")
 
 func glitch_shake() -> void:
 	var parent_node = $MainContent  # Directly reference MainContent

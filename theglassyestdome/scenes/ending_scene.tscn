@@ -1,0 +1,363 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwdmyjsh5weg0"]
+
+[ext_resource type="AudioStream" uid="uid://cpd5tl2u5uxr4" path="res://resources/audio/introSccene/endingAudio.mp3" id="1_8jq8s"]
+[ext_resource type="Script" path="res://scripts/ending_scene.gd" id="1_royyf"]
+[ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_uvpcw"]
+[ext_resource type="Texture2D" uid="uid://db0tcw21fco5c" path="res://resources/items/dome.png" id="2_hni48"]
+[ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="3_50w3g"]
+[ext_resource type="Texture2D" uid="uid://b4q6w7tc4r6qm" path="res://resources/items/broken_bowl.png" id="4_8wbld"]
+[ext_resource type="Texture2D" uid="uid://chubs3l0thr1w" path="res://resources/characters/jimbo_grasshopper.png" id="5_sfrbu"]
+[ext_resource type="AudioStream" uid="uid://bm4do1c1tvqfh" path="res://resources/music/ambience2.mp3" id="7_ntdlq"]
+[ext_resource type="AudioStream" uid="uid://w3p4whyal88s" path="res://resources/audio/sfx/glassBreak.mp3" id="8_7mvai"]
+
+[sub_resource type="Animation" id="Animation_6lg64"]
+resource_name = "ending"
+length = 62.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_uvpcw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Dome:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.23333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_hni48"), ExtResource("2_hni48"), ExtResource("4_8wbld")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/jimbo:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_sfrbu")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Dome:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(245, 157), Vector2(265, 127), Vector2(139, 203), Vector2(320, 183), Vector2(137, 128), Vector2(215, 197), Vector2(318, 197), Vector2(358, 172), Vector2(148, 266), Vector2(260, 209), Vector2(245, 157), Vector2(265, 127), Vector2(139, 203), Vector2(320, 183), Vector2(137, 128), Vector2(215, 197), Vector2(318, 197), Vector2(358, 172), Vector2(148, 266), Vector2(260, 209), Vector2(245, 157), Vector2(265, 127), Vector2(139, 203), Vector2(320, 183), Vector2(137, 128), Vector2(215, 197), Vector2(318, 197), Vector2(358, 172), Vector2(148, 266), Vector2(260, 209), Vector2(260, 209), Vector2(245, 157), Vector2(265, 127), Vector2(139, 203), Vector2(320, 183), Vector2(137, 128), Vector2(215, 197), Vector2(318, 197), Vector2(245, 157)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UnrelatedStuff/Audio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UnrelatedStuff/Music:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.833333, 62),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UnrelatedStuff/Music:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/jimbo:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(28.2204, 28.3333, 28.4333, 31.5333, 31.6333, 31.7667, 33.8333, 41.5333, 41.6667, 41.8, 50.8, 51),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(610, 407), Vector2(860, 23), Vector2(1072, 402), Vector2(1072, 402), Vector2(933, 236), Vector2(670, 506), Vector2(670, 506), Vector2(670, 506), Vector2(247, 166), Vector2(50, 488), Vector2(50, 488), Vector2(-155, 167)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/jimbo:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(30.2, 30.3, 43.4293, 43.6, 48.4667, 49.6333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(58.8333, 62),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("UnrelatedStuff/SFX:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_snhs3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_uvpcw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Dome:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hni48")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/jimbo:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_sfrbu")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Dome:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(245, 157)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UnrelatedStuff/Audio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UnrelatedStuff/Music:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UnrelatedStuff/Music:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-8.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/jimbo:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(610, 407)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/jimbo:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("UnrelatedStuff/SFX:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qd05t"]
+_data = {
+"RESET": SubResource("Animation_snhs3"),
+"ending": SubResource("Animation_6lg64")
+}
+
+[node name="EndingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_royyf")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -33.0
+offset_right = 1340.0
+offset_bottom = 764.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("1_uvpcw")
+
+[node name="Dome" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 225.0
+offset_top = 137.0
+offset_right = 725.0
+offset_bottom = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_hni48")
+
+[node name="jimbo" parent="Control" instance=ExtResource("3_50w3g")]
+position = Vector2(610, 407)
+flip_h = true
+script = null
+
+[node name="UnrelatedStuff" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UnrelatedStuff"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qd05t")
+}
+autoplay = "ending"
+
+[node name="Audio" type="AudioStreamPlayer" parent="UnrelatedStuff"]
+stream = ExtResource("1_8jq8s")
+
+[node name="Music" type="AudioStreamPlayer" parent="UnrelatedStuff"]
+stream = ExtResource("7_ntdlq")
+volume_db = -8.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="UnrelatedStuff"]
+stream = ExtResource("8_7mvai")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="animation_finished" from="UnrelatedStuff/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -26,6 +26,7 @@ func _on_idle_timeout() -> void:
     countdown_time -= 1  
     if countdown_time <= 0:
         print("60 seconds passed...")
+        get_tree().change_scene_to_file("res://scenes/lost.tscn")
         is_timer_running = false  # Stop the timer when it reaches 0
 
 func update_timer_text() -> void:

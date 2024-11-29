@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bmraj2kkhp2d7"]
+[gd_scene load_steps=30 format=4 uid="uid://bmraj2kkhp2d7"]
 
 [ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_eobxv"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_gxli6"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bflekaegcew20" path="res://resources/audio/sfx/pop-39222.mp3" id="7_tkivj"]
 [ext_resource type="AudioStream" uid="uid://dj5xgvoc1mhjm" path="res://resources/audio/sfx/small-bottle-cap-dropped-139339.mp3" id="8_2hait"]
 [ext_resource type="AudioStream" uid="uid://w3p4whyal88s" path="res://resources/audio/sfx/glassBreak.mp3" id="9_bnhku"]
+[ext_resource type="AudioStream" uid="uid://7v3rjnl3pjwk" path="res://resources/audio/sfx/menuSFX/rumble.mp3" id="9_r2mxf"]
 [ext_resource type="Texture2D" uid="uid://tcldctaja0in" path="res://resources/items/crack.png" id="11_a1uyq"]
 
 [sub_resource type="Image" id="Image_ue8yb"]
@@ -1684,7 +1685,7 @@ tracks/2/path = NodePath("MainContent/Background:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 1.43333, 2.13333),
+"times": PackedFloat32Array(0.1, 2.6, 3.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
@@ -1696,7 +1697,7 @@ tracks/3/path = NodePath("MainContent/Dome:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.43333, 2.13333),
+"times": PackedFloat32Array(2.6, 3.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
@@ -1708,7 +1709,7 @@ tracks/4/path = NodePath("MainContent/GameName:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.43333, 2.13333),
+"times": PackedFloat32Array(2.6, 3.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
@@ -1720,7 +1721,7 @@ tracks/5/path = NodePath("MainContent/PressText:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.43333, 2.13333),
+"times": PackedFloat32Array(2.6, 3.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
@@ -1732,10 +1733,10 @@ tracks/6/path = NodePath("SFX:stream")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("9_bnhku")]
+"values": [ExtResource("9_r2mxf"), ExtResource("9_bnhku")]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1744,10 +1745,10 @@ tracks/7/path = NodePath("SFX:playing")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.23333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1756,7 +1757,7 @@ tracks/8/path = NodePath("grassCrack:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.533333),
+"times": PackedFloat32Array(0, 1.6, 1.73333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]

@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg7vu70d18ksy"]
+
+[ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_m2bvh"]
+[ext_resource type="Script" path="res://scripts/lost.gd" id="1_ne7bn"]
+[ext_resource type="Texture2D" uid="uid://db0tcw21fco5c" path="res://resources/items/dome.png" id="2_jcfal"]
+[ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="3_h8geb"]
+[ext_resource type="Theme" uid="uid://uvnl8t78hotp" path="res://resources/themes/Subtitles.tres" id="4_17dlb"]
+
+[sub_resource type="Animation" id="Animation_gi1u6"]
+resource_name = "lost"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2, 2, 4, 4.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(84.5, -331), Vector2(84.5, 183.5), Vector2(84.5, 183.5), Vector2(84.5, 718)]
+}
+
+[sub_resource type="Animation" id="Animation_s8ucy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(84.5, -331)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpdmi"]
+_data = {
+"RESET": SubResource("Animation_s8ucy"),
+"lost": SubResource("Animation_gi1u6")
+}
+
+[node name="Lost" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ne7bn")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -33.0
+offset_right = 1360.0
+offset_bottom = 804.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("1_m2bvh")
+
+[node name="Dome" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 238.0
+offset_top = 202.0
+offset_right = 738.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_jcfal")
+
+[node name="jimbo" parent="Control" instance=ExtResource("3_h8geb")]
+position = Vector2(621, 468)
+flip_h = true
+script = null
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.5
+offset_top = -655.0
+offset_right = 491.5
+offset_bottom = -374.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_17dlb")
+text = "Stop slacking off! 
+You're never going to escape 
+if you just keep being like this...
+Here's another chance to get it right this time.
+"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qpdmi")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
