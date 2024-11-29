@@ -35,7 +35,7 @@ func start_event() -> void:
 
 	eventPanel.visible = false  # Hide the panel initially
 	eventTimer.one_shot = true
-	eventTimer.wait_time = randi_range(5, 10)
+	eventTimer.wait_time = randi_range(15, 30)
 	eventTimer.start()  # Start the event timer
 	print("Event timer wait time: ", eventTimer.wait_time)
 
@@ -136,6 +136,13 @@ func confirm_choice() -> void:
 				Global.breaking_rate = 10500
 			else: 
 				Global.breaking_rate = 12750
+
+			var buff_containers = get_parent().get_parent().get_node("BuffContainers")
+			if buff_containers:
+				var wanderer_icon = buff_containers.get_node("WandererIcon")
+				if wanderer_icon:
+					wanderer_icon.visible = true
+
 			bede.wait_time = 20
 			bede.start()
 	else:
@@ -182,5 +189,10 @@ func _input(event: InputEvent) -> void:
 
 func _on_bedu_timer_timeout() -> void:
 	print("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+	var buff_containers = get_parent().get_parent().get_node("BuffContainers")
+	if buff_containers:
+		var wanderer_icon = buff_containers.get_node("WandererIcon")
+		if wanderer_icon:
+			wanderer_icon.visible = false
 	Global.breaking_rate = 10000
 	get_parent().get_parent().start_random_event()

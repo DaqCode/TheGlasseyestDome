@@ -2,18 +2,23 @@ class_name MainGame
 extends Control
 
 @onready var random_event := $RandomEvent
-@onready var dragging_fly_event := $RandomEvent/DragingFlyEvent
-@onready var watcher_ant_event := $RandomEvent/TheWatcherAntEvent
-@onready var fissure_frenzy_event := $RandomEvent/FissureFrenzy
-@onready var glitch_in_the_system = $RandomEvent/GitchMoth
 @onready var idle_timer := $EventCooldown
 @onready var sfx_player := $SFX
 @onready var dome := $MainContent/Dome
 @onready var glitchSFX := $GlitchSFX
 
+#Event list based on onready
+@onready var dragging_fly_event := $RandomEvent/DragingFlyEvent
+@onready var watcher_ant_event := $RandomEvent/TheWatcherAntEvent
+@onready var fissure_frenzy_event := $RandomEvent/FissureFrenzy
+@onready var glitch_in_the_system := $RandomEvent/GitchMoth
+@onready var resonance_ripple := $RandomEvent/ResonanceRipple
+
 var active_event = null  # Track the currently active event'
 var crack_event_activated = false
-var glitch_event = false
+var glitch_event = false   
+var resonance_event_activated = false
+var resonance_shake = false
 
 @onready var sfx_options = [
 	preload("res://resources/audio/sfx/breaking_out/break1.mp3"),
@@ -33,15 +38,16 @@ func start_random_event() -> void:
 
 	# Pick a random event
 	var events = [
-		# dragging_fly_event, 
+		#dragging_fly_event
 		# watcher_ant_event, 
-		# fissure_frenzy_event, 
-		glitch_in_the_system
+		# fissure_frenzy_event,
+		# glitch_in_the_system,
+		resonance_ripple
 		
 	]
 	randomize()
 	active_event = events.pick_random()
-	while crack_event_activated == true && active_event == fissure_frenzy_event:
+	while (crack_event_activated == true || resonance_event_activated == true)&& active_event == fissure_frenzy_event:
 		active_event = events.pick_random()
 
 	active_event.start_event()
@@ -68,8 +74,13 @@ func _process(_delta: float) -> void:
 
 			random_sfx()
 			print("Not breaking.")
-			_vibrate_dome()
-
+			
+			if resonance_shake:
+				_vibrate_dome_but_more()
+			else:
+				pass
+			
+		_vibrate_dome()
 		print("Current breaking rate: 1 in ", Global.breaking_rate)
 		print("Selected number, ", breaking)
 
@@ -96,6 +107,24 @@ func _vibrate_dome() -> void:
 			"position", 
 			base_position + Vector2(randf_range(-10, 10), randf_range(-10, 10)), 
 			0.05
+		)
+
+	# Return to the original position
+	tween.tween_property(dome, "position", base_position, 0.05)
+
+func _vibrate_dome_but_more() -> void:
+	var tween = get_tree().create_tween()
+	
+	# Define the base position
+	var base_position = Vector2(-331, -167)
+
+	# Create small random offsets for the vibration
+	for _i in range(randi_range(5,10)):  # Number of shakes
+		tween.tween_property(
+			dome, 
+			"position", 
+			base_position + Vector2(randf_range(-50, 50), randf_range(-50, 50)), 
+			0.01
 		)
 
 	# Return to the original position

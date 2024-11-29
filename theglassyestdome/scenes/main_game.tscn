@@ -1,36 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2rvph4d7cjs7"]
+[gd_scene load_steps=17 format=3 uid="uid://b2rvph4d7cjs7"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_3cssu"]
 [ext_resource type="Texture2D" uid="uid://x1todv6vloec" path="res://resources/mainMenuImages/kitchen_bg.png" id="1_nb06r"]
 [ext_resource type="Texture2D" uid="uid://db0tcw21fco5c" path="res://resources/items/dome.png" id="2_njici"]
 [ext_resource type="PackedScene" uid="uid://gnv1dw4wjocb" path="res://scenes/jimbo.tscn" id="3_767yi"]
 [ext_resource type="PackedScene" uid="uid://c8ovx0thtudnq" path="res://scenes/idle_timer.tscn" id="4_86uk0"]
+[ext_resource type="Texture2D" uid="uid://dr611o3knpio3" path="res://resources/characters/icon/glitchIcon.png" id="5_r2pl8"]
 [ext_resource type="AudioStream" uid="uid://cy7fm038st8qw" path="res://resources/music/roamFree.mp3" id="6_35gbh"]
+[ext_resource type="Texture2D" uid="uid://deyjhev7s5vgr" path="res://resources/characters/icon/wandererIcon.png" id="6_3255y"]
 [ext_resource type="PackedScene" uid="uid://cq06iprx87piv" path="res://scenes/draging_fly.tscn" id="7_6nlua"]
+[ext_resource type="Texture2D" uid="uid://y4f1k5xuotbm" path="res://resources/characters/icon/slyphIcon.png" id="7_qpmn5"]
+[ext_resource type="Texture2D" uid="uid://bvt1uwfaifruh" path="res://resources/characters/icon/crackIcon.png" id="8_5nyon"]
 [ext_resource type="PackedScene" uid="uid://xrx5ih0ivcf6" path="res://scenes/the_watcher_ant_event.tscn" id="8_wgkhl"]
+[ext_resource type="Texture2D" uid="uid://cvaxmfhlgk5al" path="res://resources/characters/icon/resonanceIcon.png" id="9_jrirx"]
 [ext_resource type="PackedScene" uid="uid://c2mmotn4iaw4q" path="res://scenes/fissure_frenzy.tscn" id="9_vjovp"]
-[ext_resource type="Theme" uid="uid://djy31ft15cjh0" path="res://resources/themes/BuffDebuffPanel/EvemtBuff.tres" id="9_x8r8r"]
 [ext_resource type="PackedScene" uid="uid://barlkibl67nja" path="res://scenes/gitch_moth.tscn" id="10_k5q8p"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nveef"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.929784, 0.136978, 0.25831, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.953814, 0.547137, 0.380314, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="Theme" id="Theme_0b8a3"]
-Panel/styles/panel = SubResource("StyleBoxFlat_nveef")
+[ext_resource type="PackedScene" uid="uid://dep0c4220lsdn" path="res://scenes/resonance_ripple.tscn" id="15_wvgg0"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3
@@ -89,19 +74,41 @@ flip_h = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 20.0
-offset_top = 19.0
+offset_top = 51.0
 offset_right = 120.0
-offset_bottom = 448.0
+offset_bottom = 599.0
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 12
 
-[node name="Buff" type="Panel" parent="BuffContainers"]
-custom_minimum_size = Vector2(50, 50)
+[node name="CrackIcon" type="TextureRect" parent="BuffContainers"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("9_x8r8r")
+texture = ExtResource("8_5nyon")
 
-[node name="Debuff" type="Panel" parent="BuffContainers"]
-custom_minimum_size = Vector2(50, 50)
+[node name="ResonanceIcon" type="TextureRect" parent="BuffContainers"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = SubResource("Theme_0b8a3")
+texture = ExtResource("9_jrirx")
+
+[node name="SlyphIcon" type="TextureRect" parent="BuffContainers"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_qpmn5")
+
+[node name="WandererIcon" type="TextureRect" parent="BuffContainers"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_3255y")
+
+[node name="GlitchIcon" type="TextureRect" parent="BuffContainers"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("5_r2pl8")
 
 [node name="DebugCheck" type="Node" parent="."]
 
@@ -116,8 +123,23 @@ offset_top = -7.0
 offset_bottom = -7.0
 
 [node name="FissureFrenzy" parent="RandomEvent" instance=ExtResource("9_vjovp")]
+offset_top = 1.0
+offset_bottom = 1.0
 
 [node name="GitchMoth" parent="RandomEvent" instance=ExtResource("10_k5q8p")]
+offset_top = -7.0
+offset_bottom = -7.0
+
+[node name="ResonanceRipple" parent="RandomEvent" instance=ExtResource("15_wvgg0")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 575.0
+offset_top = 650.0
+offset_right = 575.0
+offset_bottom = 650.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="EventCooldown" type="Timer" parent="."]
 

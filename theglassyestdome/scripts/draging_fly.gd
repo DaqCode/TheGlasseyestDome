@@ -26,7 +26,7 @@ func start_event() -> void:
 
 	eventPanel.visible = false  # Hide the panel initially
 	eventTimer.one_shot = true
-	eventTimer.wait_time = randi_range(5, 10)
+	eventTimer.wait_time = randi_range(15, 30)
 	eventTimer.start()  # Start the event timer
 	print("Event timer wait time: ", eventTimer.wait_time)
 
@@ -86,6 +86,14 @@ func confirm_choice() -> void:
 	eventChoice.visible = false
 	$EventPanel/Yes.visible = false
 	$EventPanel/No.visible = false
+
+	# Ensure that the parent nodes and the target node exist before trying to access them
+	var buff_containers = get_parent().get_parent().get_node("BuffContainers")
+	if buff_containers:
+		var sylph_icon = buff_containers.get_node("SlyphIcon")
+		if sylph_icon:
+			sylph_icon.visible = true
+
 
 	if current_choice % 2 == 0:
 		var rand = randi_range(1, 2)
@@ -159,4 +167,9 @@ func _input(event: InputEvent) -> void:
 func _on_bedu_timer_timeout() -> void:
 	print("Bede timer timeout")
 	Global.breaking_rate = 10000
+	var buff_containers = get_parent().get_parent().get_node("BuffContainers")
+	if buff_containers:
+		var sylph_icon = buff_containers.get_node("SlyphIcon")
+		if sylph_icon:
+			sylph_icon.visible = false
 	get_parent().get_parent().start_random_event()

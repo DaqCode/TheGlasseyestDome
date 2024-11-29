@@ -33,7 +33,7 @@ func start_event() -> void:
 
 	eventPanel.visible = false  # Hide the panel initially
 	eventTimer.one_shot = true
-	eventTimer.wait_time = randi_range(1, 2)
+	eventTimer.wait_time = randi_range(15, 30)
 	eventTimer.start()  # Start the event timer
 	print("Event timer wait time: ", eventTimer.wait_time)
 
@@ -114,6 +114,12 @@ func confirm_choice() -> void:
 		get_parent().get_parent().glitch_event = true
 		bede.wait_time = 30
 		bede.start()
+
+		var buff_containers = get_parent().get_parent().get_node("BuffContainers")
+		if buff_containers:
+			var fissure_frenzy = buff_containers.get_node("CrackIcon")
+			if fissure_frenzy:
+				fissure_frenzy.visible = true
 	else:
 		# If player selects "No"
 		print("text shows no")
@@ -162,5 +168,10 @@ func _input(event: InputEvent) -> void:
 func _on_bedu_timer_timeout() -> void:
 	print("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 	Global.breaking_rate = 10000
+	var buff_containers = get_parent().get_parent().get_node("BuffContainers")
+	if buff_containers:
+		var glotch_icon = buff_containers.get_node("GlitchIcon")
+		if glotch_icon:
+			glotch_icon.visible = false
 	get_parent().get_parent().glitch_event = false
 	get_parent().get_parent().start_random_event()
