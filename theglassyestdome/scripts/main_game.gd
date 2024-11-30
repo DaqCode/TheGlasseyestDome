@@ -43,11 +43,11 @@ func start_random_event() -> void:
 
 	# Pick a random event
 	var events = [
-		# dragging_fly_event,
-		# watcher_ant_event, 
-		# fissure_frenzy_event,
-		glitch_in_the_system
-		# resonance_ripple
+		dragging_fly_event,
+		watcher_ant_event, 
+		fissure_frenzy_event,
+		glitch_in_the_system,
+		resonance_ripple
 		
 	]
 	randomize()

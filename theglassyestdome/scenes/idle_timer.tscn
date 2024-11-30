@@ -10,6 +10,7 @@ script = ExtResource("1_roh88")
 wait_time = 60.0
 
 [node name="Countdown" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 anchors_preset = 1
 anchor_left = 1.0
